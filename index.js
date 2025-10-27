@@ -7,7 +7,9 @@ const newsRouter = require('./routes/news');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors()); // allow frontend to call backend
+app.use(cors({
+  origin: process.env.FRONTEND_URL || '*'
+}));// allow frontend to call backend
 app.use(express.json());
 
 app.use('/api/news', newsRouter);
